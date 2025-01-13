@@ -1,0 +1,32 @@
+CREATE DATABASE inventorythree
+
+CREATE TABLE USERS (
+    UID int(11) NOT null PRIMARY KEY AUTO_INCREMENT,
+    Name varchar(200),
+    Username varchar(100),
+    Password varchar(100),
+    Role enum('ADMIN','USER')
+)
+
+CREATE TABLE PROJECT (
+    PID int(11) NOT null PRIMARY KEY AUTO_INCREMENT,
+    Year int(4),
+    Name varchar(200),
+    FileNo int(4),
+    FileName varchar(200),
+    Category varchar(100),
+    Status enum('Complete','Ongoing','KIV')
+)
+
+CREATE TABLE ASSIGNED (
+    AID int(11) NOT null PRIMARY KEY AUTO_INCREMENT,
+    UID int(11),
+    PID int(11),
+    Type enum('Electrical','Mechanical','Other'),
+    Director1 varchar(200),
+    Director2 varchar(200),
+    Engineer1 varchar(200),
+    Engineer2 varchar(200),
+    FOREIGN KEY (UID) REFERENCES users(UID),
+    FOREIGN KEY (PID) REFERENCES project(PID)
+)

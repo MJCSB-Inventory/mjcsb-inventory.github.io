@@ -1,0 +1,258 @@
+<!-- projectForm.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<!-- Tab Title -->
+	<title>New Project - MJCSB Project Inventory</title>
+
+	<!-- CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/libs/select2/dist/css/select2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/libs/jquery-minicolors/jquery.minicolors.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/libs/quill/dist/quill.snow.css"
+    />
+</head>
+
+<body>
+	<!-- Page Wrapper -->
+	<div class="page-wrapper">
+        <!-- Bread crumb and right sidebar toggle -->
+        <div class="page-breadcrumb">
+          <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+              <h4 class="page-title">New Project</h4>
+              <div class="ms-auto text-end">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      New Project
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+		<!-- End bread crumb and right sidebar toggle -->
+		
+		<!-- Container Fluid  -->
+        <div class="container-fluid">
+			<!-- Page Content -->
+			<div class="row">
+				<!-- Form to Add New Project -->
+				<div class="card">
+					<div class="card-body">
+						<!-- h5 class="card-title">Add New Project</h5 -->
+					  
+						<form action="projectForm.php" method="POST">
+						  <!-- Year -->
+						  <div class="form-group-row">
+							<label for="year">Year
+								<span class="text-required"> *</span>
+							</label>
+							
+							<div class="col-md-12">
+								<input type="number" id="year" name="year" class="required form-control" placeholder="Year" required>
+							</div>
+						  </div><br>
+						  
+						  <!-- Project Name -->
+						  <div class="form-group-row">
+							<label for="proname">Project Name
+								<span class="text-required"> *</span>
+							</label>
+							
+							<div class="col-md-12">
+								<input type="text" id="proname" name="proname" class="required form-control" placeholder="Project Name" required>
+							</div>
+						  </div><br>
+						  
+						  <!-- File No -->
+						  <div class="form-group-row">
+							<label for="fileno">File No
+								<span class="text-required"> *</span>
+							</label>
+							
+							<div class="col-md-12">
+								<input type="number" id="fileno" name="fileno" class="required form-control" placeholder="File No" required>
+							</div>
+						  </div><br>
+						  
+						  <!-- File Name -->
+						  <div class="form-group-row">
+							<label for="filename">File Name
+								<span class="text-required"> *</span>
+							</label>
+							
+							<div class="col-md-12">
+								<input type="text" id="filename" name="filename" class="required form-control" placeholder="File Name" required>
+							</div>
+						  </div><br>
+						  
+						  <!-- Assigned Section -->
+						  <div class="form-group-row">
+							<label class="col=md-12">Assigned To</label>
+							
+							  <fieldset required>
+								<div class="col-md-12">
+									<div class="form-check mr-sm-2">
+										<input type="checkbox" class="form-check-input" id="elec" name="elec">
+										<label class="form-check-label mb-0" for="elec">Electrical</label>
+										<fieldset class="conditional">
+											<div class="form-group-row">
+												<div class="col-md-12">
+													<input type="text" id="elecdirec1" name="elecdirec1" class="form-control" placeholder="Electrical Director 1">
+													<input type="text" id="elecdirec2" name="elecdirec2" class="form-control" placeholder="Electrical Director 2">
+													<input type="text" id="eleceng1" name="eleceng1" class="form-control" placeholder="Electrical Engineer 1">
+													<input type="text" id="eleceng2" name="eleceng2" class="form-control" placeholder="Electrical Engineer 2">
+												</div>
+											</div>
+										</fieldset>
+									</div>
+									
+									<div class="form-check mr-sm-2">
+										<input type="checkbox" class="form-check-input" id="mech" name="mech">
+										<label class="form-check-label mb-0" for="mech">Mechanical</label>
+										<fieldset class="conditional">
+											<div class="form-group-row">
+												<div class="col-md-12">
+													<input type="text" id="mechdirec1" name="mechdirec1" class="form-control" placeholder="Mechanical Director 1">
+													<input type="text" id="mechdirec2" name="mechdirec2" class="form-control" placeholder="Mechanical Director 2">
+													<input type="text" id="mecheng1" name="mecheng1" class="form-control" placeholder="Mechanical Engineer 1">
+													<input type="text" id="mecheng2" name="mecheng2" class="form-control" placeholder="Mechanical Engineer 2">
+												</div>
+											</div>
+										</fieldset>
+									</div>
+									
+									<div class="form-check mr-sm-2">
+										<input type="checkbox" class="form-check-input" id="other" name="other">
+										<label class="form-check-label mb-0" for="other">Other</label>
+										<fieldset class="conditional">
+											<div class="form-group-row">
+												<div class="col-md-12">
+													<input type="text" id="otherdirec1" name="otherdirec1" class="form-control" placeholder="Dierctor 1">
+													<input type="text" id="otherdirec2" name="otherdirec2" class="form-control" placeholder="Director 2">
+													<input type="text" id="othereng1" name="othereng1" class="form-control" placeholder="Engineer 1">
+													<input type="text" id="othereng2" name="othereng2" class="form-control" placeholder="Engineer 2">
+												</div>
+											</div>
+										</fieldset>
+									</div>
+								</div>
+							  </fieldset>
+						  </div>
+						  
+						  <!-- Category Section -->
+						  <div calss="form-group-row">
+							<label class="col-md-3 mt-3">Category
+								<span class="text-required"> *</span>
+							</label>
+							
+							<div class="col-md-12">
+								<select for="category" name="category" class="required select2 form-select shadow-none" style="width: 100%; height: 36px" required>
+									<option value="" disabled selected hidden>-- Select Category --</option>
+									
+									<optgroup label="Transportation">
+										<option value="Road & Highway">Road & Highway</option>
+										<option value="Railway">Railway</option>
+										<option value="Airport & Seaport">Airport & Seaport</option>
+									</optgroup>
+									
+									<optgroup label="Real Estate">
+										<option value="Properties">Properties</option>
+										<option value="Housing">Housing</option>
+										<option value="Residental">Residental</option>
+									</optgroup>
+									
+									<optgroup label="Healthcare">
+										<option value="Hospital">Hospital</option>
+										<option value="Clinic">Clinic</option>
+									</optgroup>
+									
+									<optgroup label="Education">
+										<option value="School">School</option>
+										<option value="Education Centre">Education Centre</option>
+									</optgroup>
+									
+									<option>Other</option>
+								</select>
+							</div>
+						  </div>
+						  
+						  <!-- Status Section --> 
+						  <div class="form-group-row">
+							<label class="col-md-3 mt-3">Status
+								<span class="text-required"> *</span>
+							</label>
+							
+							<div class="col-md-12">
+								<select for="status" name="status" class="required select2 form-select shadow-none" style="width: 100%; height: 36px" required>
+									<option value="" disabled selected hidden>-- Select Status --</option>
+									
+									<option value="Complete">Complete</option>
+									<option value="Ongoing">Ongoing</option>
+									<option value="KIV">KIV</option>
+								</select>
+							</div>
+						  </div>
+						  
+						  <!-- * -->
+						  <br><label class="col-md-3 mt-3 text-required">(*) Mandatory Field</label>
+						  
+						  <!-- Submit Button -->
+						  <div class="border-top">
+							<div class="card-body text-center">
+							  <br><button type="submit" class="btn btn-submit">
+								Submit
+							  </button>
+							</div>
+						  </div>
+						<form>
+					</div>
+				</div>
+				<!-- End of Form to Add New Project -->
+			</div>
+			<!-- End Page Content -->
+        </div>
+		<!-- End Container Fluid -->
+		
+	</div>
+	<!-- End Page Wrapper -->
+	
+	<!-- This page js -->
+    <script src="assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="dist/js/pages/mask/mask.init.js"></script>
+    <script src="assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
+    <script src="assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
+    <script src="assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
+    <script src="assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/libs/quill/dist/quill.min.js"></script>
+    <!-- script></script -->
+</body>
+</html>

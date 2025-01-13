@@ -1,0 +1,70 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+
+CREATE TABLE `assigned` (
+  `AID` int(11) NOT NULL,
+  `UID` int(11) DEFAULT NULL,
+  `PID` int(11) DEFAULT NULL,
+  `Type` enum('Electrical','Mechanical','Other') NOT NULL,
+  `Director1` varchar(200) DEFAULT NULL,
+  `Director2` varchar(200) DEFAULT NULL,
+  `Engineer1` varchar(200) DEFAULT NULL,
+  `Engineer2` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `project` (
+  `PID` int(11) NOT NULL,
+  `Year` int(4) DEFAULT NULL,
+  `Name` varchar(200) DEFAULT NULL,
+  `FileNo` int(4) DEFAULT NULL,
+  `FileName` varchar(200) DEFAULT NULL,
+  `Category` varchar(100) DEFAULT NULL,
+  `Status` enum('Complete','Ongoing','KIV') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `users` (
+  `UID` int(11) NOT NULL,
+  `Name` varchar(200) DEFAULT NULL,
+  `Username` varchar(100) DEFAULT NULL,
+  `Password` varchar(100) DEFAULT NULL,
+  `Role` enum('ADMIN','USER') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+ALTER TABLE `assigned`
+  ADD PRIMARY KEY (`AID`),
+  ADD KEY `UID` (`UID`),
+  ADD KEY `fk_project` (`PID`);
+
+ALTER TABLE `project`
+  ADD PRIMARY KEY (`PID`);
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`UID`);
+
+
+ALTER TABLE `assigned`
+  MODIFY `AID` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `project`
+  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `users`
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT;
+
+
+ALTER TABLE `assigned`
+  ADD CONSTRAINT `PID` FOREIGN KEY (`PID`) REFERENCES `project` (`PID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `assigned_ibfk_1` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`),
+  ADD CONSTRAINT `assigned_ibfk_2` FOREIGN KEY (`PID`) REFERENCES `project` (`PID`),
+  ADD CONSTRAINT `fk_project` FOREIGN KEY (`PID`) REFERENCES `project` (`PID`) ON DELETE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
